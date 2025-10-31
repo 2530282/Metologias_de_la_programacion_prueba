@@ -76,5 +76,5 @@ print(message_f_strings)
 Famous_person = "Sherlock Homes"
 Quote = "Elemental, mi querido Watson"
 
-message_f_strings = f"{Famous_person} una vez dijo {Quote}"
+message_f_strings = f"{Famous_person} dijo {Quote}"
 print(message_f_strings)
