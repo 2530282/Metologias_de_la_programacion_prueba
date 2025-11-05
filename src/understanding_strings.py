@@ -21,9 +21,13 @@ print(Name)
 
 Un metodo es una accion que python puede realizar en eun fraagmento de datos o sobre una variable.
 
-El punto . despues de una variable seguida del metodo title () dice que se tiene que ejecutar el metodo title() en la variable Name.
+El punto . despues de una variable seguida del metodo title () dice que se tiene que ejecutar el
+ metodo title() en la variable Name.
 
-Todos los metodos van seguidos de parentesis porque en ocasiones necesitan informacion adicional para funcionar, lo cual iria dentro de los paréntesis.
+Todos los metodos van seguidos de parentesis porque en ocasiones necesitan informacion adicional 
+para funcionar, lo cual iria dentro de los paréntesis.
+En esta ocación el metodo .title() no requiere información adicional para ejecutarse.
+
 """
 
 print(Name.upper())
@@ -38,6 +42,35 @@ print(full_name)
 
 print("Hola, " + full_name.title() + "!")
 
+# Whitespaces
+"""
+  Whitespace se refiere a cualquier caracter que no se imprime, es decir, un tabulador 
+  y finales de línea. Los whitespaces se utilizan comúnmente para organizar las salidas (prints)
+  de tal manera que sea más amigable de leer o ver para los usuarios.
+"""
+# Ejemplos tabulador
+print("Python")
+print("\tPython") #Tabulador
+print("\t\tPython") #Tabulador
+
+# Ejemplos salto de línea
+print("Lenguajes de programación:  \nPython  \nJavaScript\nC  \nJavascript")
+print("Emiliano")
+print("Barrientos")
+
+message = """
+
+    por dios, callate ya un rato, que me estas volviendo loco
+"""
+#Eliminacion de espacios en blanco
+programming_language = " Python Javascrip "
+print(programming_language)
+print(programming_language.lstrip()) 
+""" Elimina espacios en blanco a la izquierda """
+print(programming_language.rstrip()) 
+""" Elimina espacios en blanco a la derecha """
+print(programming_language.strip()) 
+""" Elimina espacios en blanco a ambos lados """ 
 
 # Syntax error con strings
 
