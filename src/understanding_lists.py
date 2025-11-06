@@ -33,6 +33,10 @@ print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki', 'ducati']
 """
     Agregar elementos a una lista
         - insert(): Inserta un elemento en una posición específica de la lista.
+    El metodo insert(index, element) toma dos argumentos:
+         el índice donde se desea insertar el elemento y el elemento mismo.
+
+    (index, element*)           *(elementos aqui se ocupan para funcionar el metodo)
 """
 print("\nAgregar elementos a una lista:Metodo insert()\n")
 motorcycles = ["honda", "yamaha", "suzuki"]
@@ -40,3 +44,48 @@ print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki']
 motorcycles.insert(0, "ducati")
 print(motorcycles)  # Salida: ['ducati', 'honda', 'yamaha', 'suzuki']
 print(motorcycles[0])  # Salida: ducati
+"""
+                Experimento mio.
+"""
+print(motorcycles.append("ducati")) 
+
+"""
+    Eliminar elementos de una lista
+    - del: Elimina un elemento en una posición específica de la lista. 
+    La declaración del index elimina el elemento en esa posición especifica.
+"""
+print("\nEliminar elementos de una lista:Declaración del\n")
+motorcycles = ["honda", "yamaha", "suzuki"]
+print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki']
+del motorcycles[0]
+print(motorcycles)  # Salida: ['yamaha', 'suzuki']
+"""
+    Eliminar elementos de una lista
+    - pop(): Elimina y devuelve el último elemento de la lista.
+    El método pop() no requiere argumentos y elimina el ultimo elemento de la lista.
+"""
+print("\nEliminar elementos de una lista:Metodo pop()\n")
+motorcycles = ["honda", "yamaha", "suzuki"]
+print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki']
+firts_motorcycle = motorcycles.pop() # Sin nada entre las comillas es el ultimo dato de la lista.
+print(motorcycles)  # Salida: ['honda', 'yamaha']
+print(firts_motorcycle)  # Salida: suzuki
+print(f"La primera motocicleta eliminada es: {firts_motorcycle.title()}.")
+
+"""
+    Eliminar elementos de una lista por valor
+    - remove(): Elimina la primera aparición de un valor específico en la lista.
+    El método remove() toma un argumento: el valor del elemento que se desea eliminar.
+"""
+print("\nEliminar elementos de una lista por valor:Metodo remove()\n")
+motorcycles = ["honda", "yamaha", "suzuki", "ducati"]  
+print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki', 'ducati']
+motorcycles.remove("ducati")
+print(motorcycles)  # Salida: ['honda', 'yamaha', 'suzuki'] 
+
+names = ['anna', 'bob', 'charlie', 'david']
+print(names)
+deleted_name = input("\n \nIngrese el nombre que desea eliminar de la lista: ")
+"Salto de pagina = \n"
+names.remove(deleted_name.strip().lower())
+print(names)
