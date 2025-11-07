@@ -88,4 +88,51 @@ print(names)
 deleted_name = input("\n \nIngrese el nombre que desea eliminar de la lista: ")
 "Salto de pagina = \n"
 names.remove(deleted_name.strip().lower())
+"strip()= borrar espacios en blanco al inicio y al final"
 print(names)
+
+"""
+    Ordenar listas
+
+    Metodo de las listas: sort()
+"""
+cars = ["bmw", "audi", "ford", "kia"]
+print(cars)  # Salida: ['bmw', 'audi', 'ford', 'kia']
+cars.sort()
+print(cars)  # Salida: ['audi', 'bmw', 'ford    
+cars.sort(reverse=True) # Ordenar en orden descendente
+print(cars)  # Salida: ['kia', 'ford', 'bmw', 'audi']
+
+"""
+    Método reverse()
+    Invierte el orden de los elementos en la lista.
+"""
+motorcycles = ["mortalica", "honda", "ducati"]
+print(motorcycles)  # Salida: ['mortalica', 'honda', 'ducati']
+motorcycles.reverse()  # Invierte el orden de la lista
+print(motorcycles)  # Salida: ['ducati', 'honda', 'mortalica']
+
+"""
+    Cantidad de elementos en una lista
+    Metodo built-in len()
+"""
+
+Caricatures = ["one pice", "naruto", "bleach", "dragon ball"]
+print("\n Metodo built-in len()\n")
+print(len(Caricatures))  # Salida: 4
+
+"""
+    Método built-in
+
+    sorted():
+        Ordena una lista temporalmente sin modificar la lista original.
+
+"""
+
+favorite_students = ["jorge" , "jose" , "carlos", "emiliano"]
+print(favorite_students)  # Salida: ['jorge', 'jose', 'carlos', 'emiliano']
+print("Lista ordenada temporalmente",sorted(favorite_students))  # Salida: ['carlos', 'emiliano', 'jorge', 'jose']
+print("Lista original: ", favorite_students)  # Salida: ['jorge', 'jose', 'carlos', 'emiliano']
+print("Lista ordenada temporalmente",sorted(favorite_students, reverse = True))  # Salida: ['jose', 'jorge', 'emiliano', 'carlos']
+print("Lista original: ", favorite_students)  # Salida: ['jorge', 'jose', 'carlos', 'emiliano']
+
