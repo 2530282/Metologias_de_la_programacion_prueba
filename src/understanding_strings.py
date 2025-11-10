@@ -1,6 +1,7 @@
 """ 
     Un string es de manera sencilla una serie de caracteres.
-    En Python todo lo que se encuentre dentro de comillas simples '' o dobles "" es considerado un string.
+    En Python todo lo que se encuentre dentro de comillas simples '' o dobles "" es considerado
+     un string.
 
         "Esto es un string"
         'Esto también es un string'
@@ -19,7 +20,7 @@ print(Name)
 
 """
 
-Un metodo es una accion que python puede realizar en eun fraagmento de datos o sobre una variable.
+Un metodo es una accion que python puede realizar en un fragmento de datos o sobre una variable.
 
 El punto . despues de una variable seguida del metodo title () dice que se tiene que ejecutar el
  metodo title() en la variable Name.
