@@ -10,7 +10,8 @@ for mago in magos:
     
         Identación en Python
 
-            Pyhton utiliza la identación para determinar cuando una linea de codigo esta conectada a la linea de codigo esta conectada a la linea de codigo anterior.
+            Pyhton utiliza la identación para determinar cuando una linea de codigo esta conectada 
+            a la linea de codigo anterior.
 
             Basicamente, se utilizan 4 espacios en blanco para obligarnos a escribir código ordenada y estructurado.
 
