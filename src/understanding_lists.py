@@ -136,3 +136,4 @@ print("Lista original: ", favorite_students)  # Salida: ['jorge', 'jose', 'carlo
 print("Lista ordenada temporalmente",sorted(favorite_students, reverse = True))  # Salida: ['jose', 'jorge', 'emiliano', 'carlos']
 print("Lista original: ", favorite_students)  # Salida: ['jorge', 'jose', 'carlos', 'emiliano']
 
+# Pasado al cuaderno

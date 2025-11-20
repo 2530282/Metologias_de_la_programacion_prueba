@@ -54,3 +54,5 @@ print(f"Lista de dígitos: {digits}")
 print("Valor mínimo:", min(digits))  # Salida: 0
 print("Valor máximo:", max(digits))  # Salida: 9
 print("Suma de todos los dígitos:", sum(digits))  # Salida: 45
+
+# Pasado al cuaderno

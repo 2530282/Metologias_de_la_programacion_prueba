@@ -84,3 +84,6 @@ print(message)
 
 message = f"Emiliano tiene {age} años."
 print(message) 
+
+
+# Pasado al cuaderno

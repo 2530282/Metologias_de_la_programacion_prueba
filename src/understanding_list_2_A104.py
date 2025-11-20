@@ -5,12 +5,12 @@ print(players[0:3]) # desde donde quiero, : , hasta donde -1.
 
 print(players[1:4]) # ['messi', 'Travis Kelce', 'chicharito']
 print(players[:4]) # players = ["cr7", 'messi', 'Travis Kelce', 'chicharito']
-print(players[2:])
+print(players[2:]) # Desde el indice 2 hasta el final de la lista
 
-print(players[-3:])
+print(players[-3:]) # Desde el tercer elemento desde el final hasta el final de la lista
 
-print(players[-3:-1])
-print(players[4:2])
+print(players[-3:-1]) # Desde el tercer elemento desde el final hasta el penultimo elemento
+print(players[4:2]) # Lista vacia porque el indice inicial es mayor al final
 
 # Slicing en for
 players = ["axel", 'ignacio', 'Travis', 'chicha', 'corona', 'jorge']
@@ -36,3 +36,5 @@ cars[2] = 'mazda'
 cars[3] = 'toyota'
 
 """ listas son datos mutables, tuplas no mutables """
+
+# Pasado al cuaderno

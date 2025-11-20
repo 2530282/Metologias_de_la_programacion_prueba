@@ -16,3 +16,5 @@ print(even_number_0_100_range)
 # Numeros pares utilizando list comprehension
 even_list_compre = [value for  value in range(0, 101)if value%2 == 0]
 print(even_list_compre)
+
+# Pasado al cuaderno

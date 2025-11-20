@@ -112,3 +112,5 @@ Quote = "Elemental, mi querido Watson"
 
 message_f_strings = f"{Famous_person} dijo {Quote}"
 print(message_f_strings)
+
+# Pasado al cuaderno

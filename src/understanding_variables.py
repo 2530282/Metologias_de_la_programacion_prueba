@@ -44,3 +44,5 @@ traceback : Es un registro de donde el interpetre tuvo ploblemas al intentar eje
     NameError: Significa que olvidamos establecer el valor de una variable antes de utilizar o cometimos un error al ingresar el nombre de la variable.
 
 """
+
+# Pasado al cuaderno

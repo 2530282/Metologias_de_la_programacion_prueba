@@ -49,3 +49,5 @@ print("Thank you everyonre, that was a great magic show!") # Solución identar a
 magos = ["ron", "harry", "hermione", "draco"]
 for mago in magos: # Error de syntaxis, falta el ":"
     print(mago) 
+
+# Pasado al cuaderno

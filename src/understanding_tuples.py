@@ -22,7 +22,7 @@ for dimension in rectangle_dimensions:
 
 """
     No podemos modificar una tupla, ni tampoco agregar/eliminar elementos. Lo que si podemos hacer es
-    cambiar la  asignación a una variable que almacene una tupla.
+    cambiar la asignación a una variable que almacene una tupla.
 
 """
 rectangle_dimensions = (300, 150) # Tupla
