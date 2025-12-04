@@ -1,4 +1,4 @@
-# Manejo de strings en Python
+# Manejo de números y booleanos en Python
 
 # Nombre: Barrientos Cardona Emiliano de Jesús
 
@@ -6,317 +6,372 @@
 
 # Grupo: IM 1-2
 
-# En esta practica se explicara el manejo de strings en Python, incluyendo
-# la creación, lectura, indexación, slicing, concatenación, búsqueda, 
-# reemplazo, división, unión y formato de texto. Tambien se veran elementos que nos permitan quitar
-# espacios en blanco y formas de identificar si una palabra es identica a otra.
+# Resumen:
+# Los int son numeros enteros y los float son numeros decimales
+# Los booleanos se sacan a travez de la comparacion de un valor (==)
+# EL validar rangos nos permite que el codigo identifique que es un valor que se
+# va calcular y no un texto y se tiene que evitar la divicion entre cero 
+# porque provoca fallos en nuestro programa.
+# Mi documento cubira que son los booleanos, int, float, los signos y como utilizarlos
+# tambien veremos como ponerles rango y evitar dividir entre 0.
 
+# Problem 1: Temperature converter and range flag
 
-# Problem 1: Full name formatter (name + initials)
-
-# Este programa pide el nombre y al menos un apellido para asi 
-# sacar las iniciales de tu nombre en mayusculas.
+# Descripción:
+# Convierte una temperatura en grados Celsius (float) a Fahrenheit y Kelvin. Además, 
+# determina un valor booleano is_high_temperature que sea true si la temperatura en 
+# Celsius es mayor o igual que 30.0 y false en caso contrario.
 
 # Entradas:
-# -full_name
+# - temp_c (float; temperatura en °C).
 
 # Salidas:
-# - "Formatted name: <Name In Title Case>"
-# - "Initials: <X.X.X.>"
+# - "Fahrenheit:" <temp_f>
+# - "Kelvin:" <temp_k>
+# - "High temperature:" true|false
 
 # Validaciones:
-# - full_name no debe estar vacío después de strip().
-# - Debe contener al menos dos palabras (por ejemplo, nombre y apellido).
-# - No aceptar cadenas que sean solo espacios.
+# - Verificar que temp_c pueda convertirse a float.
+# - No permitir temperaturas físicas imposibles en Kelvin (por ejemplo, temp_k < 0.0).
 
-full_name = input("Escribir tu nombre completo: ").title() # Los strings son inmutables: cualquier cambio genera una nueva cadena.
-
-if len(full_name) > 0: 
-    name_parts = full_name.split()
-    if len(name_parts) >= 2:
-        print("Formatted name: <Name In Title Case>")
-        initial_1 = ".".join([name[0] for name in full_name.split()])
-        print(f"Initials: <", initial_1, ">")
+temp_c = input("Insertar temperatura en grados Celsius: ")
+if float(temp_c):
+    if float(temp_c) >= -273.15:
+        temp_k = float(temp_c) + 273.15
+        print(f"Kelvin:",temp_k)
+        float(temp_c) >= 30.0
+        temp_f = (((9 * float(temp_c))/5) + 32)
+        print(f"Fahrenheit: ", temp_f)
+        print("High temperature:", float(temp_c))
     else:
-        print("Por favor, ingresa al menos un nombre y un apellido.")
-# 1) Normal:
-# Escribir tu nombre completo: emiliano barrientos cardona
-# Formatted name: <Name In Title Case>
-# Initials: < E.B.C >
-# 2) Border:
-# Escribir tu nombre completo: emiliano barrientos
-# Formatted name: <Name In Title Case>
-# Initials: < E.B >
+        print("Mistake")
+
+# 1) Normal: 
+# Insertar temperatura en grados Celsius: 34.6
+# Kelvin: 307.75
+# Fahrenheit:  94.28
+# High temperature: 34.6
+# 2) Border: 
+# Insertar temperatura en grados Celsius: 30
+# Kelvin: 303.15
+# Fahrenheit:  86.0
+# High temperature: 30.0
 # 3) Error:
-# Escribir tu nombre completo: emi
-# Por favor, ingresa al menos un nombre y un apellido.
+# Insertar temperatura en grados Celsius: -273.15
+#  Mistake
 
-# Problem 2: Simple email validator (structure + domain)
-
-# Valida si una dirección de correo tiene un formato básico correcto:
-# - Contiene exactamente un '@'.
-# - Después del '@' debe haber al menos un '.'.
-# - No contiene espacios en blanco.
-# Si el correo es válido, también muestra el dominio (la parte después de '@').
-
-# Entradas:
-# - email_text
-
-# Salidas:
-# - "Valid email: true" o "Valid email: false"
-# - Si es válido: "Domain: <domain_part>"
-
-# Validaciones:
-# - email_text no vacío tras strip().
-# - Contar cuántas veces aparece '@'.
-# - Verificar que no haya espacios (no debe haber " " en email_text).
-
-email_text = input("Escribir un correo electrónico: ").strip()
-
-if "@" in email_text and "." in email_text:
-    At_sign_part = email_text.count("@")
-    print(f"At sign: <{At_sign_part}>")
-    print("Domain:", email_text.split("@")[-1].split("."))
-    print("Valid email: true")
-else:
-    print("Valid email: false")
-# 1) Normal:
-# Escribir un correo electrónico: e.bar@gmail.com
-# At sign: <1>
-# Domain: ['gmail', 'com']
-# Valid email: true
-# 2) Border:
-# Escribir un correo electrónico: emiliano@gmail.com
-# At sign: <1>
-# Domain: ['gmail', 'com']
-# Valid email: true
-# 3) Error:
-# Escribir un correo electrónico: e@h
-# Valid email: false
-
-# Problem 3: Palindrome checker (ignoring spaces and case)
+# Problem 2: Work hours and overtime payment
 
 # Descripción:
-# Determina si una frase es un palíndromo, es decir, se lee igual de izquierda a derecha y de derecha a izquierda, ignorando espacios y mayúsculas/minúsculas.
+# Calcula el pago total semanal de un trabajador. Hasta 40 horas se pagan a hourly_rate (float). Las horas extra (> 40) se pagan al 150% de la tarifa normal. Además, genera un booleano has_overtime que indique si el trabajador hizo horas extra.
 
 # Entradas:
-# - phrase (string).
+# - hours_worked (float; horas trabajadas en la semana).
+# - hourly_rate (float; pago por hora).
 
 # Salidas:
-# - "Is palindrome: true" o "Is palindrome: false"
-# - (Opcional) Mostrar también la versión normalizada de la frase.
+# - "Regular pay:" <regular_pay>
+# - "Overtime pay:" <overtime_pay>
+# - "Total pay:" <total_pay>
+# - "Has overtime:" true|false
 
 # Validaciones:
-# - phrase no vacía tras strip().
-# - Longitud mínima razonable después de limpiar espacios (por ejemplo, al menos 3 caracteres).
+# - hours_worked >= 0
+# - hourly_rate > 0
+# - Si alguno no cumple, mostrar "Error: invalid input".
 
-phrase = input("Escribir una frase: ").strip() # Es buena práctica normalizar entrada con strip() 
+hours_worked = input("Insertar horas trabajadas: ")
+hourly_rate = input("Insertar el pago por hora: ")
+float(hourly_rate)
+float(hours_worked)
 
-if len(phrase) > 0:
-    if len(phrase) >= 3:
-        phrase_1 = phrase.lower() # y lower() antes de compararla.
-        phrase_2 = phrase_1[::-1]
-        if phrase_1 == phrase_2:
-            print("Is palindrome: true")
-            print(f"Palindromo: <{phrase_1}>")
+if float(hours_worked) > 0: #  Validar datos antes de 
+# operar (por ejemplo, que horas y salarios no sean negativos).
+    if float(hourly_rate) > 0:
+        regular_pay_1 = float(hourly_rate) <= 40
+        regular_pay = regular_pay_1 * float(hourly_rate)
+        overtime_pay_1 = float(hours_worked) - 40
+        overtime_pay = overtime_pay_1 * float(hourly_rate)
+        total_pay = regular_pay + overtime_pay
+        print("Regular pay: <", {regular_pay},">")
+        print("Overtime pay: <", {overtime_pay},">" )
+        print("Total pay: <", {total_pay},">")
+        has_overtime = float(hours_worked) > 40
+        print("Has overtime: ", {has_overtime > 0})
+    else:
+        print("Error: invalid input")
+# 1) Normal: 
+# Insertar horas trabajadas: 234
+# Insertar el pago por hora: 543
+# Regular pay: < {0.0} >
+# Overtime pay: < {105342.0} >
+# Total pay: < {105342.0} >
+# Has overtime:  {True}
+# 2) Border: 
+# Insertar horas trabajadas: 490
+# Insertar el pago por hora: 450
+# Regular pay: < {0.0} >
+# Overtime pay: < {202500.0} >
+# Total pay: < {202500.0} >
+# Has overtime:  {True}
+# 3) Error:
+# Insertar horas trabajadas: 0
+# Insertar el pago por hora: 0 
+# Error: invalid input
+
+# Problem 3: Discount eligibility with booleans
+
+# Descripción:
+# Determina si un cliente obtiene un descuento en su compra. La regla es:
+# - Tiene descuento si:
+#   - is_student es true OR
+#   - is_senior es true OR
+#   - purchase_total >= 1000.0
+# Calcula también el total a pagar aplicando un 10% de descuento cuando sea elegible.
+
+# Entradas:
+# - purchase_total (float; total de la compra).
+# - is_student_text (string; "YES" o "NO").
+# - is_senior_text (string; "YES" o "NO").
+
+# Salidas:
+# - "Discount eligible:" true|false
+# - "Final total:" <final_total>
+
+# Validaciones:
+# - purchase_total >= 0.0
+# - Normalizar is_student_text e is_senior_text a mayúsculas y convertir a booleanos is_student, 
+# is_senior.
+# - Si el texto no es "YES" ni "NO", mostrar "Error: invalid input".
+
+purchase_total = input("Total de la compra: ")
+is_student_text = input("Usted es un estudiante: YES o NO: ").upper()
+is_senior_text = input("Usted es un señor: YES o NO: ").upper()
+
+if float(purchase_total) >= 0.0:
+    if "NO" or "YES":
+        if float(purchase_total) >= 1000.0:
+            purchase_total_1 = float(purchase_total)%10
+            purchase_total = float(purchase_total) - purchase_total_1
+            is_senior_text = "YES"
+            print(f"Discount eligible: ", {is_senior_text == "YES"})
+            print(f"Final total: <",{type(purchase_total)},">")
+            is_student_text = "YES"
+            print(f"Discount eligible: ", {is_student_text == "YES"})
+            print(f"Final total: <",{type(purchase_total)},">")
         else:
-            print("Is palindrome: false")
-else:
-     print("Is palindrome: false") # Escribir código legible: nombres de variables claros y mensajes de error entendibles.
-# 1) Normal:
-# Escribir una frase: amar rama
-# Is palindrome: true
-# Palindromo: <amar rama>
-# 2) Border:
-# Escribir una frase: otto
-# Is palindrome: true
-# Palindromo: <otto>
-# 3) Error:
-# Escribir una frase: morir
-# Is palindrome: false
+            print("Error: invalid input")
+# 1) Normal: 
+# Total de la compra: 876
+# Usted es un estudiante: YES o NO: no
+# Usted es un señor: YES o NO: yes
+# Discount eligible:  {True}
+# Final total: < {876.0} >
+# Discount eligible:  {True}
+# Final total: < {876.0} >
+# 2) Border: 
+# Total de la compra: 8765
+# Usted es un estudiante: YES o NO: no
+# Usted es un señor: YES o NO: yes
+# Discount eligible:  {True}
+# Final total: < {8760.0} >
+# Discount eligible:  {True}
+# Final total: < {8760.0} >
+# 3) Error: 
+# Total de la compra: 0
+# Usted es un estudiante: YES o NO: ef
+# Usted es un señor: YES o NO: re
+# Error: invalid input
 
-# Problem 4: Sentence word stats (lengths and first/last word)
-
-# Descripción:
-# Dada una oración, el programa debe:
-# 1) Normalizar espacios (quitar espacios al principio y al final).
-# 2) Separar las palabras por espacios.
-# 3) Mostrar:
-#    - Número total de palabras.
-#    - Primera palabra.
-#    - Última palabra.
-#    - Palabra más corta y más larga (por longitud).
-
-# Entradas:
-# - sentence (string).
-
-# Salidas:
-# - "Word count: <n>"
-# - "First word: <...>"
-# - "Last word: <...>"
-# - "Shortest word: <...>"
-# - "Longest word: <...>"
-
-# Validaciones:
-# - Oración no vacía tras strip().
-# - Debe contener al menos una palabra válida después de split().
-
-sentence = input("Escribir una oración: ").strip()
-if len(sentence) > 0: # Diseñar validaciones claras: primero que no esté vacío, luego el formato.
-    sentence_1 = len(sentence.split())
-    sentence_words = sentence.split()
-    words = ", ".join(sentence_words)
-    min_word = min(sentence_words, key=len)
-    max_word = max(sentence_words, key=len)
-    print(f"Word count: <", {sentence_1} ,">")
-    print(f"First word: <", {sentence.split(" ")[0]} ,">")
-    print(f"Last word: <", {sentence.split(" ")[-1]} ,">")
-    print(f"Shortest word: <", {min_word} ,">")
-    print(f"Longest word: <", {max_word} ,">")
-else:
-    print("Mistake")
-
-# 1) Normal:
-# Escribir una oración: Vamos a buscar esferas
-# Word count: < {4} >
-# First word: < {'Vamos'} >
-# Last word: < {'esferas'} >
-# Shortest word: < {'a'} >
-# Longest word: < {'esferas'} >
-# 2) Border:
-# Escribir una oración: mexico
-# Word count: < {1} >
-# First word: < {'mexico'} >
-# Last word: < {'mexico'} >
-# Shortest word: < {'mexico'} >
-# Longest word: < {'mexico'} >
-# 3) Error:
-# Escribir una oración:
-# Mistake
-
-# Problem 5: Password strength classifier
+# Problem 4: Basic statistics of three integers
 
 # Descripción:
-# Clasifica una contraseña como "weak", "medium" o "strong" según reglas mínimas (puedes afinarlas, pero documéntalas en los comentarios).
-
-# Ejemplo de reglas:
-# - Weak: longitud < 8 o todo en minúsculas o muy simple.
-# - Medium: longitud >= 8 y mezcla de letras (mayúsculas/minúsculas) o dígitos.
-# - Strong: longitud >= 8 y contiene al menos:
-#   - una letra mayúscula,
-#   - una letra minúscula,
-#   - un dígito,
-#   - un símbolo no alfanumérico (por ejemplo, !, @, #, etc.).
+# Lee tres números enteros y calcula: suma, promedio (float), valor máximo, valor mínimo y 
+# un booleano all_even que indique si los tres números son pares.
 
 # Entradas:
-# - password_input (string).
+# - n1 (int)
+# - n2 (int)
+# - n3 (int)
 
 # Salidas:
-# - "Password strength: weak"
-# - "Password strength: medium"
-# - "Password strength: strong"
+# - "Sum:" <sum_value>
+# - "Average:" <average_value>
+# - "Max:" <max_value>
+# - "Min:" <min_value>
+# - "All even:" true|false
 
 # Validaciones:
-# - No aceptar contraseña vacía.
-# - Verificar longitud con len().
+# - Verificar que los tres valores se puedan convertir a int.
+# - No se requieren restricciones adicionales (se permiten negativos).
 
-password_input = input("Escribir una contraseña: ").strip()
+n1 = input("Number 1: ") # Usar nombres de variables descriptivos y mensajes 
+# claros para el usuario.
+n2 = input("Number 2: ")
+n3 = input("Number 3: ")
 
-if len(password_input) < 8 and password_input.islower():
-        print(password_input)
-        print("Password strength: weak")  
+n1 = int(n1)
+n2 = int(n2)
+n3 = int(n3)
 
-        if len(password_input) >= 8 and password_input.isupper():
-            print(password_input)
-            print("Password strength: medium")
-  
-            if len(password_input) >= 8 and password_input.isdigit() and password_input.isalnum():
-                print(password_input)
-                print("Password strength: strong") 
-            else:
-               print("Mistake")
-# 1) Normal:
-# Escribir una contraseña: emiliano27
-# emiliano27
-# Password strength: medium
-# 2) Border:
-# Escribir una contraseña: juan
-# juan
-# Password strength: weak
+if int(n1) and int(n2) and int(n3):
+    sum_value = n1+n2+n3
+    average_value = sum_value/3
+    value = [n1,n2,n3]
+    print("Sum:",{sum_value})
+    print("Average: ", {average_value})
+    print("Max: ",{max(value)})
+    print("Min: ",{min(value)})
+    all_even = n1 == n2 == n3
+    print("All even: ", {all_even}) # Documentar 
+# claramente cómo se interpretan los booleanos 
+# (qué significa true y qué significa false en cada contexto)
+else:
+    print("Error")
+# 1) Normal: 
+# Number 1: 1
+# Number 2: 2
+# Number 3: 3
+# Sum: {6}
+# Average:  {2.0}
+# Max:  {3}
+# Min:  {1}
+# All even:  {False}
+# 2) Border: 
+# Number 1: 3
+# Number 2: 3
+# Number 3: 3
+# Sum: {9}
+# Average:  {3.0}
+# Max:  {3}
+# Min:  {3}
+# All even:  {True}
 # 3) Error:
-# Escribir una contraseña: 
-# Mistake
+# Number 1: f
+# Number 2: r
+# Number 3: e
+# Error  
 
-# Problem 6: Product label formatter (fixed-width text)
+
+# Problem 5: Loan eligibility (income and debt ratio)
 
 # Descripción:
-# Dado el nombre de un producto y su precio, genera una etiqueta en una sola línea con el siguiente formato:
-
-# Product: <NAME> | Price: $<PRICE>
-
-# La cadena completa debe tener exactamente 30 caracteres:
-# - Si es más corta, rellena con espacios al final.
-# - Si es más larga, recorta hasta 30 caracteres.
+# Determina si una persona es elegible para un préstamo con base en:
+# - monthly_income (float)
+# - monthly_debt (float)
+# - credit_score (int)
+# La regla es:
+# - debt_ratio = monthly_debt / monthly_income
+# - eligible es true si:
+#   - monthly_income >= 8000.0 AND
+#   - debt_ratio <= 0.4 AND
+#   - credit_score >= 650
 
 # Entradas:
-# - product_name (string).
-# - price_value (puede leerse como string o número; conviértelo a string para mostrarlo).
+# - monthly_income (float; ingreso mensual).
+# - monthly_debt (float; pagos mensuales de deuda).
+# - credit_score (int; puntaje de crédito).
 
 # Salidas:
-# - "Label: <exactly 30 characters>"
-# (Puedes mostrar la etiqueta entre comillas para que se vean los espacios.)
+# - "Debt ratio:" <debt_ratio>
+# - "Eligible:" true|false
 
 # Validaciones:
-# - product_name no vacío tras strip().
-# - price_value debe poder convertirse a un número positivo.
+# - monthly_income > 0.0 (evitar división entre cero).
+# - monthly_debt >= 0.0
+# - credit_score >= 0
+# - Si no se cumple, mostrar "Error: invalid input".
 
-product_name = input("Escribir un producto: ")
-price_value = input("Escribir el precio: ")
+monthly_income = input("Ingresar ingreso mensual: ")
+monthly_debt = input("Ingresar pagos mensuales de deuda: ")
+credit_score = input("Ingresar puntuaje de crédito: ")
 
-number_1 = len(product_name) # Evitar "números mágicos" en índices; documentar qué extrae cada slice.
-number_2 = len(price_value)
-number_4 = number_1 + number_2
+float(monthly_debt)
+float(monthly_income)
+int(credit_score) # Usar tipos apropiados: int para contadores, 
+# float para cantidades con decimales.
 
-label_1 = product_name + " " + price_value
-label = label_1.center(30)
-label[:30]
+if int(credit_score) >= 0 and float(monthly_debt) >= 0.0:
+    if float(monthly_income) > 0.0 :
+        if float(monthly_income) >= 8000.0 and int(credit_score) >= 650:
+            debt_ratio = float(monthly_debt) / float(monthly_income)
+            print("Debt ratio: ",{debt_ratio <= 0.4})
+        else:
+            print("Error: invalid input")
+# 1) Normal: 
 
-if number_1 > 0:
-    print("Label: <", {label}, ">") # Usar métodos de string en lugar de reescribir lógica básica.
-    price_value.replace("-","")
-    print(f"Product: < ", {product_name}," > | Price: $<", {price_value} ,">")
-else:
-    print("Mistake")
+# 2) Border: 
 
-# 1) Normal:
-# Escribir un producto: electrolit
-# Escribir el precio: 20
-# Label: < {'        electrolit 20         '} >
-# Product: <  {'electrolit'}  > | Price: $< {'20'} >
-# 2) Border:
-# Escribir un producto: lala
-# Escribir el precio: 34
-# Label: < {'           lala 34            '} >
-# Product: <  {'lala'}  > | Price: $< {'34'} >
-# 3) Error:
-# Escribir un producto:
-# Escribir el precio:
-# Mistake
+# 3) Error: 
+# Ingresar ingreso mensual: 8000
+# Ingresar pagos mensuales de deuda: 2000
+# Ingresar puntuaje de crédito: 80
+# Error: invalid input
 
-# CONCLUSIONES
-# Gracias a estos programas nos damos cuenta de que cada cosa que escribimos en cada
-# linea hace una funcion, ejemplo de ello son las strings que nos permite manejar la 
-# información que colocamos y donde se mueve, hay funciones como lower(minusculas), 
-# upper(mayusculas), join(busqueda de un valor), count(ver cuanto valores hay iguales)
-# y cada una permiten modificar las strings pero todo debe ser igualitario ya que no se 
-# pueden mezclar strings con integers, tambien las validaciones son necesarias para ver
-# si se esta cumpliendo con los valores, y aprendi que las strings no se puede modificar 
-# pero si sacar partes de las strings para hacer nuevas con ayuda de las slices.
+# Problem 6: Body Mass Index (BMI) and category flag
+
+# Descripción:
+# Calcula el índice de masa corporal (BMI) de una persona con la fórmula:
+# - bmi = weight_kg / (height_m * height_m)
+# Además, genera booleanos para indicar:
+# - is_underweight (bmi < 18.5)
+# - is_normal (18.5 <= bmi < 25.0)
+# - is_overweight (bmi >= 25.0)
+
+# Entradas:
+# - weight_kg (float; peso en kilogramos).
+# - height_m (float; estatura en metros).
+
+# Salidas:
+# - "BMI:" <bmi_redondeado>
+# - "Underweight:" true|false
+# - "Normal:" true|false
+# - "Overweight:" true|false
+
+# Validaciones:
+# - weight_kg > 0.0
+# - height_m > 0.0
+# - Si no se cumple, mostrar "Error: invalid input".
+
+weight_kg = input("Peso en kilogramos : ")
+height_m = input("Estatura en metros: ")
+
+if float(weight_kg) > 0.0 and float(height_m) > 0.0:
+    bmi = float(weight_kg) / (float(height_m) * float(height_m))
+    bmi_redondeado = round(bmi) #  Evitar duplicar expresiones 
+# complejas: guardar resultados intermedios en variables.
+    print("BMI:",{bmi_redondeado})
+    print("Underweight:", {bmi < 18.5})
+    print("Normal: ", {18.5 <= bmi < 25.0})
+    print("Overweight: ", {bmi >= 25.0})
+
+# 1) Normal: 
+
+# 2) Border: 
+# Peso en kilogramos : 43
+# Estatura en metros: 1.54
+# BMI: {18}
+# Underweight: {True}
+# Normal:  {False}
+# Overweight:  {False}
+# 3) Error: 
+
+# Conclusion
+# Los enteros y flotantes se utilizan para hacer calculos matematicos,
+#  los cuales tienen la desventaja que no pueden ser 0 en algunos casos
+#  por ello utilizamos las validaciones para asi poder evitar una falla 
+# en el programa, tmabien hay que entender que validar los rangos nos 
+# permite saber que numeros estamos usando y los operadores and, or y 
+# not nos permitieron ahorrarnos tiempo al momento de realizarlo, estos
+# nos permiten entender como funcionan las matematicas en la nomina, 
+# descuentos, prestamos, etc.
+
 
 # Referencias
 
-# https://www.youtube.com/watch?v=L7rILGJBG4U&t=563
-# https://ellibrodepython.com/cadenas-python 
-# http://programminghistorian.org/es/lecciones/manipular-cadenas-de-caracteres-en-python
-# https://developers.google.com/edu/python/strings?hl=es-419 
-# https://docs.python.org/3/library/string.html 
+# https://realpython.com/python-numbers/
+# https://ellibrodepython.com/numeros-complejos 
+# https://tenthousandmeters.com/blog/python-behind-the-scenes-8-how-python-integers-work/ 
+# https://learn.microsoft.com/es-es/shows/intro-to-python-development/python-for-beginners-13-of-44-numeric-data-types
+# https://realpython.com/python-variables/
+

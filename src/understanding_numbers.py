@@ -27,7 +27,7 @@ suma = number_1 + number_2
 difference = number_1 - number_2
 multiplication = number_1 * number_2   
 division = number_1 / number_2
-modulo = number_1 % number_2
+modulo = number_1 % number_2 
 power = number_1 ** 2
 
 print("Suma:", suma)
@@ -86,4 +86,4 @@ message = f"Emiliano tiene {age} años."
 print(message) 
 
 
-# Pasado al cuaderno
+# Pasado al cuaderno 
