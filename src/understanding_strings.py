@@ -60,8 +60,7 @@ print("Emiliano")
 print("Barrientos")
 
 message = """
-
-    por dios, callate ya un rato, que me estas volviendo loco
+  hola 
 """
 #Eliminacion de espacios en blanco
 programming_language = " Python Javascrip "
