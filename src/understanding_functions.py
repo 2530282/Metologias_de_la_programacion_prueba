@@ -11,7 +11,7 @@
     def name_of_functions(paraments):
         actions
 """
-def greeting_mauro():
+def greeting_mauro(): 
     print("Hola Mauro, que gusto verte!!!")
 
 def greet(username, msj):
